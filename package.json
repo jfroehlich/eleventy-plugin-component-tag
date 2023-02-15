@@ -1,5 +1,5 @@
 {
-  "name": "eleventy-components",
+  "name": "eleventy-plugin-components",
   "version": "1.0.0",
   "description": "Render basic fractal components in eleventy with nunjucks.",
   "main": "components.js",
@@ -8,19 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jfroehlich/eleventy-components.git"
+    "url": "git+https://github.com/jfroehlich/eleventy-plugin-components.git"
   },
   "keywords": [
-    "eleventy",
     "11ty",
-    "fractal"
+    "eleventy",
+    "eleventy-plugin",
+    "fractal",
+    "components",
+    "nunjucks"
   ],
   "author": "Johannes Fröhlich",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/jfroehlich/eleventy-components/issues"
+    "url": "https://github.com/jfroehlich/eleventy-plugin-components/issues"
   },
-  "homepage": "https://github.com/jfroehlich/eleventy-components#readme",
+  "homepage": "https://github.com/jfroehlich/eleventy-plugin-components#readme",
   "dependencies": {
     "glob": "^8.0.3",
     "yaml": "^2.1.1"
