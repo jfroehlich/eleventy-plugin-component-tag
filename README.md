@@ -9,8 +9,8 @@ The tag can be used with nunjucks without eleventy. Read below for details.
 Installation
 --------------------------------------------------------------------------------
 
-- Tested with eleventy 2.0.0 but should work with 1.0, too. - Should have at
-least nodejs v17.
+- Tested with eleventy 2.0.0 but should work with 1.0, too. 
+- Should have at least nodejs v17.
 
 ```bash
 npm install --save-dev eleventy-plugin-component-tag
@@ -23,7 +23,7 @@ Then open your Eleventy config file (probably `.eleventy.js`) and use
 const pluginComponentTag = require("eleventy-plugin-component-tag");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(pluginComponentTag);
+    eleventyConfig.addPlugin(pluginComponentTag);
 };
 ```
 
@@ -41,34 +41,34 @@ loaded. To get an overview here are all settings at once:
 const pluginComponentTag = require("eleventy-plugin-component-tag");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(pluginComponentTag, {
+    eleventyConfig.addPlugin(pluginComponentTag, {
 
-    // The name of the tag used in the templates
-		tagName: "component",
+        // The name of the tag used in the templates
+        tagName: "component",
 
-    // A path to a json file with component definitions relative to the project
-    // root. Or `false` if this should not be used.
-		componentsFile: false,
+        // A path to a json file with component definitions relative to the
+        // project root. Or `false` if this should not be used.
+        componentsFile: false,
 
-    // The prefix of the components. Fractal uses `@` but you can use what ever
-    // floats your boat (I guess).
-		handlePrefix: "@",
+        // The prefix of the components. Fractal uses `@` but you can use what
+        // ever floats your boat (I guess).
+        handlePrefix: "@",
 
-    // The name of the component lookup object inside the nunjucks context. When
-    // this is false the tag expects a components json file.
-		contextName: "components",
+        // The name of the component lookup object inside the nunjucks context.
+        // When this is false the tag expects a components json file.
+        contextName: "components",
 
-    // This is where the components are located relative to a nunjucks template
-    // lookup directory.
-		includesDir: "./assets",
+        // This is where the components are located relative to a nunjucks
+        // template lookup directory.
+        includesDir: "./assets",
 
-    // Files matching the glob in this list are ignored.
-		ignorePatterns: [],
+        // Files matching the glob in this list are ignored.
+        ignorePatterns: [],
 
-    // These extension are components. This is a nunjucks tag -- you could use
-    // "liquid" or "hbs" as well but it may not work that well.
-		templateExtensions: "njk,html"
-  });
+        // These extension are components. This is a nunjucks tag -- you could
+        // use "liquid" or "hbs" as well but it may not work that well.
+        templateExtensions: "njk,html"
+    });
 };
 ```
 

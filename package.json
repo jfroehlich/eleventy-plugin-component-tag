@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/jfroehlich/eleventy-plugin-component-tag.git"
   },
+  "engines": {
+    "node": ">=17.0.0"
+  },
   "keywords": [
     "11ty",
     "eleventy",
