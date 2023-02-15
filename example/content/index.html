@@ -1,0 +1,16 @@
+---
+layout: "layouts/page.njk"
+---
+
+{% component "@example" %}
+
+<hr/>
+
+{% component "@example--nested", {
+	headline: {rank: 2, text: "This is a nested component"},
+	content: [
+		{handle: "@example"}
+	]
+} %}
+
+<hr/>

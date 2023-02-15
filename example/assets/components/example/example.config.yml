@@ -1,0 +1,13 @@
+context:
+  headline:
+    rank: 2
+    text: "An example"
+  text: |
+    This text comes from the components config file.
+
+variants:
+  - name: "hot"
+    classes: "hot"
+
+  - name: "nested"
+

@@ -66,7 +66,7 @@ module.exports = function(eleventyConfig) {
         ignorePatterns: [],
 
         // These extension are components. This is a nunjucks tag -- you could
-        // use "liquid" or "hbs" as well but it may not work that well.
+        // use "liquid" or "hbs" but it may propably not work that well.
         templateExtensions: "njk,html"
     });
 };

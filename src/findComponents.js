@@ -1,6 +1,6 @@
 /* eslint-env node */
 const path = require("path");
-const lib = require("./src/utils");
+const lib = require("./utils");
 
 /**
  * Find all components.
