@@ -43,12 +43,39 @@ const pluginComponentTag = require("eleventy-plugin-component-tag");
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginComponentTag, {
 
+    // The name of the tag used in the templates
+		tagName: "component",
+
+    // A path to a json file with component definitions relative to the project
+    // root. Or `false` if this should not be used.
+		componentsFile: false,
+
+    // The prefix of the components. Fractal uses `@` but you can use what ever
+    // floats your boat (I guess).
+		handlePrefix: "@",
+
+    // The name of the component lookup object inside the nunjucks context. When
+    // this is false the tag expects a components json file.
+		contextName: "components",
+
+    // This is where the components are located relative to a nunjucks template
+    // lookup directory.
+		includesDir: "./assets",
+
+    // Files matching the glob in this list are ignored.
+		ignorePatterns: [],
+
+    // These extension are components. This is a nunjucks tag -- you could use
+    // "liquid" or "hbs" as well but it may not work that well.
+		templateExtensions: "njk,html"
   });
 };
 ```
 
-Components and templates
+Example
 --------------------------------------------------------------------------------
+
+
 
 Using the tag standalone
 --------------------------------------------------------------------------------
