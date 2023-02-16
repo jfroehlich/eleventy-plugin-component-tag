@@ -165,7 +165,7 @@ Please note that a component can include other components if needed. And you can
 override your components context. Let's look at how it's used in the `page.njk`:
 
 ```nunjucks
-{% component '@my-comonent--nestable', {
+{% component '@my-component--nestable', {
   headline: "The headline from the layout",
   content: [
     {handle: '@my-component', context: {content: "Check, check. Works!"}},
