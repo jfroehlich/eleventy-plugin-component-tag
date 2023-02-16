@@ -81,10 +81,11 @@ Example
 Using the tag standalone
 --------------------------------------------------------------------------------
 
-In case you'd like to use this tag outside of eleventy or with a custom nunjucks
-environment, it's possible to import the necessary parts seperately.
+Consider this a more advanced topic: In case you'd like to use this tag outside
+of eleventy or with a custom nunjucks environment, it's possible to import the
+necessary parts seperately.
 
-```nodejs
+```javascript
 
 const {findComponents, ComponentsTag} = require("eleventy-plugin-component-tag");
 
