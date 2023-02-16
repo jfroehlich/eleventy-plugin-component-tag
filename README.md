@@ -76,6 +76,114 @@ module.exports = function(eleventyConfig) {
 Example
 --------------------------------------------------------------------------------
 
+Let's say you have your assets in an `assets` folder and or want your design
+library from [fractal](https://fractal.build/) there. Well, before you copy your
+entire library you might want to test your setup with a simple component like
+below:
+
+```
+├─ assets/
+│  ├─ components/
+│  │  └─ my-component/
+│  │     ├─ my-component.css
+│  │     ├─ my-component.js
+│  │     ├─ my-component.config.yml
+│  │     ├─ my-component--nestable.njk
+│  │     └─ my-component.njk
+│  │
+│  └─ layouts/
+│     └─ page.njk
+...
+```
+
+Eleventy doesn't have asset pipelines by default (which is a good thing) so
+you'd need to handle css/scss and js files separatly and they not covered in
+this tutorial.
+
+That `my-component.njk` is the actual component. Let's look at its fairly simple
+content:
+
+```nunjucks
+<p class="my-component{% if classes %} {{ classes }}{% endif %}">
+  {{ content }}
+</p>
+```
+
+Inside your `page.njk` you could now use that component like this:
+
+```nunjucks
+{% component "@my-component" %}
+```
+
+That `my-components.config.yml` holds a default configuration and defines
+potential variants. 
+
+```yml
+handle: "my-component"
+
+context:
+  content: "This the default text."
+
+variants:
+  - name: "hot"
+    classes: "hot-stuff"
+
+  - name: "nestable"
+    headline: "This is the default headline."
+    content: []
+```
+
+The config can change the components `handle` which is the basename of the component
+by default. It may have a context object to set defaults. And it may have variants.
+Everything else in there is ignored by `findComponents` and the `ComponentTag`.
+
+That default context is injected into the component template by default and would then
+render inside the `page.njk` as:
+
+```html
+<p class="my-component">This is the default text.</p>
+```
+
+The variants can only be defined by the config file, because the may use the
+same component template and just manipulate the context (which is the variants
+object in the list). The only requirement of a variant in the list is the
+`name`.
+
+Let's look at the more complex `nestable` variant example. That may have its own
+template file with the variant name appended as `my-component--nestable.njk`:
+
+```nunjucks
+<h2>{{ headline }}</h2>
+<section class="my-component{% if classes %} {{ classes }}{% endif %}">
+  {% for item in content %}
+  {% component item.handle, item.context %}
+  {% endfor %}
+</section>
+```
+
+Please note that a component can include other components if needed. And you can
+override your components context. Let's look at how it's used in the `page.njk`:
+
+```nunjucks
+{% component '@my-comonent--nestable', {
+  headline: "The headline from the layout",
+  content: [
+    {handle: '@my-component', context: {content: "Check, check. Works!"}},
+    {handle: '@my-component', context: {content: "Hello there."}}
+  ]
+} %}
+```
+
+The tags pattern is `{% component <handle>, <contextOverride> %}`. And because of
+that the `page.njk` would then render as:
+
+```html
+<h2>The headline from the layout.</h2>
+<section class="my-component">
+  <p class="my-component">Check, check. Works!</p>
+  <p class="my-component">Hello there.</p>
+</section>
+```
 
 
 Using the tag standalone
