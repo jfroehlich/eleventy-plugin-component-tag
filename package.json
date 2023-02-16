@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-component-tag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Render basic fractal components in eleventy with nunjucks.",
   "main": "plugin.js",
   "scripts": {

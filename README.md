@@ -11,6 +11,7 @@ Installation
 
 - Tested with eleventy 2.0.0 but should work with 1.0, too. 
 - Should have at least nodejs v17.
+- And you should be using nunjucks since it's a nunjucks tag …
 
 ```bash
 npm install --save-dev eleventy-plugin-component-tag
@@ -59,7 +60,7 @@ module.exports = function(eleventyConfig) {
         contextName: "components",
 
         // This is where the components are located relative to a nunjucks
-        // template lookup directory.
+        // views directory.
         includesDir: "./assets",
 
         // Files matching the glob in this list are ignored.
@@ -80,3 +81,41 @@ Example
 Using the tag standalone
 --------------------------------------------------------------------------------
 
+In case you'd like to use this tag outside of eleventy or with a custom nunjucks
+environment, it's possible to import the necessary parts seperately.
+
+```nodejs
+
+const {findComponents, ComponentsTag} = require("eleventy-plugin-component-tag");
+
+// ... Setup the nunjucks env to your liking here...
+
+env.addExtension("ComponentsTag", new ComponentsTag(env, {
+    // name of the nunjucks tag.
+    tagName: "component",
+
+    // string with relative path to json file cwd or false
+    fromFile: false,
+
+    // the variable name inside the context or false
+    fromContext: "components"	
+}));
+
+
+const context = {};
+context.components = findComponents({
+    // Where the components live inside a views directory
+		includesDir: "./assets",
+
+    // These globs should be ignored
+		ignorePatterns: [],
+
+    // Those file extensions are used for templates
+		templateExtensions: "njk,html",
+
+    // Thats the prefix for components inside the views.
+		handlePrefix: "@"
+});
+
+env.render(context, ...);
+```
