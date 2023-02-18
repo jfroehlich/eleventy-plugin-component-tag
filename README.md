@@ -154,9 +154,9 @@ render inside the `page.njk` as:
 <p class="my-component">This is the default text.</p>
 ```
 
-The variants can only be defined by the config file, because the may use the
+The variants can only be defined by the config file, because they may use the
 same component template and just manipulate the context (which is the variants
-object in the list). The only requirement of a variant in the list is the
+object in the list). The only requirement for a variant in the list is the
 `name`.
 
 Let's look at the more complex `nestable` variant example. That may have its own
@@ -201,7 +201,7 @@ Using the tag standalone
 
 Consider this a more advanced topic: In case you'd like to use this tag outside
 of eleventy or with a custom nunjucks environment, it's possible to import the
-necessary parts seperately.
+necessary parts separately.
 
 ```javascript
 
