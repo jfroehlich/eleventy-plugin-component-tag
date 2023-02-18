@@ -2,11 +2,11 @@
 layout: "layouts/page.njk"
 ---
 
-{% component "@example" %}
+{% render "@example" %}
 
 <hr/>
 
-{% component "@example--nested", {
+{% render "@example--nested", {
 	headline: {rank: 2, text: "This is a nested component"},
 	content: [
 		{handle: "@example"}

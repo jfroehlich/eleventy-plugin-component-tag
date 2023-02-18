@@ -4,6 +4,6 @@
 {% endif -%}
 <div class="example-component">
     {% for item in content %}
-    {% component item.handle, item.config %}
+    {% render item.handle, item.config %}
     {% endfor %}
 </div>
