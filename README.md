@@ -44,8 +44,11 @@ const pluginComponentTag = require("eleventy-plugin-component-tag");
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(pluginComponentTag, {
 
-        // The name of the tag used in the templates
-        tagName: "component",
+        // The name of the tag used in the nunjucks views.
+        // Starting 0.0.3 this tag is called `render` by default because the
+        // fractal tag is called `render` and has no option to change that.
+        // If you feel like changing it to something else, feel free to do so.
+        tagName: "render",
 
         // A path to a json file with component definitions relative to the
         // project root. Or `false` if this should not be used.
@@ -64,7 +67,7 @@ module.exports = function(eleventyConfig) {
         includesDir: "./assets",
 
         // Files matching the glob in this list are ignored.
-        ignorePatterns: [],
+        ignorePatterns: ["./**/_*"],
 
         // These extension are components. This is a nunjucks tag -- you could
         // use "liquid" or "hbs" but it may propably not work that well.
@@ -112,7 +115,7 @@ content:
 Inside your `page.njk` you could now use that component like this:
 
 ```nunjucks
-{% component "@my-component" %}
+{% render "@my-component" %}
 ```
 
 That `my-components.config.yml` holds a default configuration and defines
@@ -156,16 +159,16 @@ template file with the variant name appended as `my-component--nestable.njk`:
 <h2>{{ headline }}</h2>
 <section class="my-component{% if classes %} {{ classes }}{% endif %}">
   {% for item in content %}
-  {% component item.handle, item.context %}
+  {% render item.handle, item.context %}
   {% endfor %}
 </section>
 ```
 
 Please note that a component can include other components if needed. And you can
-override your components context. Let's look at how it's used in the `page.njk`:
+override your component's context. Let's look at how it's used in the `page.njk`:
 
 ```nunjucks
-{% component '@my-component--nestable', {
+{% render '@my-component--nestable', {
   headline: "The headline from the layout",
   content: [
     {handle: '@my-component', context: {content: "Check, check. Works!"}},
@@ -226,5 +229,6 @@ context.components = findComponents({
 		handlePrefix: "@"
 });
 
+// this `render` method is from nunjucks
 env.render(context, ...);
 ```

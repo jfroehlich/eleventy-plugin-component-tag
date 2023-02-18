@@ -1,8 +1,8 @@
 /* eslint-env node */
 // nodejs min 17.0
 
-const findComponents = require("./src/findComponents");
-const ComponentTag = require("./src/ComponentTag");
+const findComponents = require("./findComponents");
+const ComponentTag = require("./ComponentTag");
 
 /**
  * The component plugin.
@@ -12,12 +12,12 @@ const ComponentTag = require("./src/ComponentTag");
  */
 async function _plugin(api, settings) {
 	const opts = Object.assign({
-		tagName: "component",
+		tagName: "render",
 		componentsFile: false,
 		handlePrefix: "@",
 		contextName: "components",
 		includesDir: "./assets",
-		ignorePatterns: [],
+		ignorePatterns: ["./**/_*"],
 		templateExtensions: "njk,html"
 	}, settings);
 
