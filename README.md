@@ -6,6 +6,13 @@ using nunjucks. Or create your standalone design library with just eleventy.
 
 The tag can be used with nunjucks without eleventy. Read below for details.
 
+Missing Features
+--------------------------------------------------------------------------------
+
+- [ ] Tests and CI setup
+- [ ] Remove the yaml dependency and make config loading configurable.
+
+
 Installation
 --------------------------------------------------------------------------------
 
