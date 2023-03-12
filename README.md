@@ -42,8 +42,8 @@ you only copy the require and the `addPlugin` lines above!
 Options
 --------------------------------------------------------------------------------
 
-There are a number of options to customize the tag and how the components are
-loaded. To get an overview here are all settings at once:
+There are several options to customize the tag and how the components are
+loaded. To get an overview here are all the settings at once:
 
 ```javascript
 const pluginComponentTag = require("eleventy-plugin-component-tag");
