@@ -4,7 +4,7 @@
   "description": "Render basic fractal components in eleventy with nunjucks.",
   "main": "src/plugin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx ava --verbose"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,15 @@
     "glob": "^8.1.0",
     "yaml": "^2.2.1"
   },
+  "ava": {
+    "environmentVariables": {},
+    "failFast": true,
+    "files": [
+      "./tests/*.js"
+    ]
+  },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0"
+    "@11ty/eleventy": "^2.0.0",
+    "ava": "^5.2.0"
   }
 }
