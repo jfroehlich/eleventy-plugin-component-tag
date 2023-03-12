@@ -136,11 +136,13 @@ context:
 
 variants:
   - name: "hot"
-    classes: "hot-stuff"
+    context:
+      classes: "hot-stuff"
 
   - name: "nestable"
-    headline: "This is the default headline."
-    content: []
+    context:
+      headline: "This is the default headline."
+      content: []
 ```
 
 The config can change the components `handle` which is the basename of the component
