@@ -1,6 +1,8 @@
 eleventy-plugin-component-tag
 ================================================================================
 
+!! This repository has moved to: https://codeberg.org/jfroehlich/eleventy-plugin-component-tag !!
+
 Render basic components from your fractal design library into your eleventy site
 using nunjucks. Or create your standalone design library with just eleventy.
 
